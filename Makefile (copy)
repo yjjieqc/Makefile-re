@@ -1,0 +1,12 @@
+ifneq ($(KERNELRELEASE),)
+    export-objs = module1.o
+    obj-m = extern.o
+else
+    KERNELDIR :=  /lib/modules/$(shell uname -r)/build
+    PWD       := $(shell pwd)
+all:
+    $(MAKE) -C $(KERNELDIR) M=$(PWD) modules
+
+clean:
+    $(RM) .tmp_versions Module.symvers modules.order .tmp_versions .*.cmd *.o *.ko *.mod.c
+endif
