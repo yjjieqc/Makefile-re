@@ -1,3 +1,6 @@
 #object file
 *.[ao]
 *.out
+
+#project file
+*.code-workspace
